@@ -1,0 +1,40 @@
+《C和指针》中说用用递归方法计算菲波那切数的计算代价非常大，在递归计算Fibonacci(10)时，Finbonacci(3)的值被计算了21次，在递归计算
+Fibonacci(30)时，Fibonacci(3)的值倍计算了317811次（非常大）。之后我设计了一个函数，可以计算出317811这个数值。代码如下：
+
+
+//设计的函数
+static int cnt = 0;
+
+void F(int n)
+{
+	if (n >= 3) {
+		if(n = 3)
+			cnt++;
+		F(n - 1);
+		F(n - 2);
+	}
+
+	return;
+}
+
+main()
+{
+  F(10);
+  printf("%d\n", cnt);
+  return 0;
+}
+
+但是测试的时候发现输出结果是1。
+
+/*
+**用递归方法计算第n个菲波那切数的值
+*/
+
+long fibonacci( int n )
+{
+  if( n <= 2 )
+    return 1;
+    
+    return fibonacci( n - 1) + fibonacci( n - 2 );
+}
+
