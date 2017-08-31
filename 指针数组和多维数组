@@ -1,0 +1,44 @@
+指针数组：
+
+const char *keyword1[] = {
+	"do",
+	"whatever",
+	"you",
+	"want",
+	"to"
+};
+
+多维数组：
+
+const char keyword2[][10] = {
+	"do",
+	"whatever",
+	"you",
+	"want",
+	"to"
+};
+
+设置两个指针，p1和p2，分别指向 keyword1 和 keyword2 :
+char **p1      = keyword1;
+char (*p2)[10] = keyword2;
+
+输出：
+printf("%s\n", p1);
+printf("%s\n", p1 + 1);
+printf("%s\n", p2[0]);
+printf("%s\n", p2[1]);
+
+饻y\?
+鴾y\?
+do
+to
+请按任意键继续. . .
+
+预期的输出结果应该是：
+do
+whatever
+do
+whatever
+请按任意键继续. . .
+
+那么问题出在哪了？~
