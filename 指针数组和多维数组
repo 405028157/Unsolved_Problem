@@ -20,7 +20,7 @@ const char keyword2[][10] = {
 
 定义两个指针，p1和p2，分别指向 keyword1 和 keyword2 :
 char **p1      = keyword1;
-char (*p2)[10] = keyword2;
+int (*p2)[10]  = keyword2;
 
 输出：
 printf("%s\n", *p1);
@@ -42,3 +42,8 @@ whatever
 请按任意键继续. . .
 
 那么问题出在哪了？~
+
+已解决，是由于粗心犯的错误，在23行， 将指针的类型声明错了。 改为 char (*p2)[10] = keyword2; 就正常了。不过发现
+之前的错误声明也可以“正常”起作用，p2 + 1 本来是将指针向后移动 sizeof(char) * 10 , 误声明成 int 后， p2 + 1变
+为了 sizeof(int) * 10， 正好是前面 sizeof(char) * 10 的4倍，这也解释了 printf("%s\n", p2[1]); 的输出是 to 而不
+whatever
