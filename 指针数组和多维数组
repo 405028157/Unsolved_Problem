@@ -23,13 +23,13 @@ char **p1      = keyword1;
 char (*p2)[10] = keyword2;
 
 输出：
-printf("%s\n", p1);
-printf("%s\n", p1 + 1);
+printf("%s\n", *p1);
+printf("%s\n", *(p1 + 1));
 printf("%s\n", p2[0]);
 printf("%s\n", p2[1]);
 
-饻y\?
-鴾y\?
+do
+whatever
 do
 to
 请按任意键继续. . .
