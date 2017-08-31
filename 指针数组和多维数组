@@ -18,7 +18,7 @@ const char keyword2[][10] = {
 	"to"
 };
 
-设置两个指针，p1和p2，分别指向 keyword1 和 keyword2 :
+定义两个指针，p1和p2，分别指向 keyword1 和 keyword2 :
 char **p1      = keyword1;
 char (*p2)[10] = keyword2;
 
