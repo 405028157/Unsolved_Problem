@@ -1,0 +1,44 @@
+这是测试所用的代码：
+
+#include<stdio.h>
+#define N_KEYWORD (sizeof (keyword) / sizeof(keyword[0]))
+
+int main()
+{
+	char const *keyword[] = {
+		"do",
+		"whatever",
+		"you",
+		"want",
+		"to"
+	};
+
+	printf("%d\n", N_KEYWORD);
+	printf("%d\n", sizeof(keyword));
+	printf("%d\n", sizeof(keyword[0]));
+	printf("%s\n", keyword[0]);
+	
+	return 0;
+}
+
+输出结果为：
+
+5
+40
+8
+do
+请按任意键继续．．．
+
+问题描述到一半突然就想明白了。。。
+
+问题出在不太确定 sizeof(keyword) 的值是什么， 通过测试确认了它的值就是 数组的长度 * sizeof(指针）   //指针的大小和他的类型无关 
+
+引出了另一个问题， 我在34行注释中写到 指针的大小和他的类型无关 ，因为在测试中确认 sizeof(long int *), sizeof(char *), sizeof(long double *)
+等的值是相同的，都是8（字节 ），这些指针的值都是所指的地址的第一个字节，和指针所指的值所占的内存空间无关，例如
+short a; 
+long b;  //假设long int 和 short int 所占空间不同
+int *pointer1 = &a;
+int *pointer2 = &b
+
+变量a占4个字节，变量b占8个字节，尽管占用空间不同，pointer1 和 pointer2 都分别只指向变量地址的第一个字节，区别是当执行 pointer1++ pointer2++ 时，
+由于声明的指针类型不同， pointer1移动4个字节， pointer2移动8个字节。
