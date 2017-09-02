@@ -1,25 +1,20 @@
 #include<stdio.h>
-float Fqin(int n, int a[], int x);
 
+double f(int n, double a[], double x)
+{
+	int i;
+	double p = a[n];
+	for (i = n; i > 0; i--)
+		p = a[i - 1] + x*p;
+	return p;
+}
 int main()
 {
 	return 0;
-	float a[10] = { 1,2,3,4,5,6,7,8,9,10 };
-	printf("%f\n", Fqin(9, a, 1.1));
-
+	double a[10] = {1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0 };
+	double ans = f(9, a, 1.1);
+	printf("%f\n", ans);
 	return 0;
-}
-
-float Fqin(int n, float a[], float x)
-{
-	float sum = 0.0;
-	sum = a[n];
-	for (--n; n >= 1; n--) {
-		sum = (sum + a[n]) * x;
-	}
-	sum += a[n];
-
-	return sum;
 }
 
 运行之后没有输出
