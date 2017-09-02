@@ -1,0 +1,4 @@
+	int *pi;
+	pi = (int *)malloc(4 * sizeof(int));
+	*pi = 1;
+	printf("%d\n", *pi);
