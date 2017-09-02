@@ -2,3 +2,37 @@
 	pi = (int *)malloc(4 * sizeof(int));
 	*pi = 1;
 	printf("%d\n", *pi);
+
+
+问题已经解决，在此之前这段程序无法正常运行，后来查了malloc函数的原型，无意中发现它的原型被包含在了头文件<stdlib.h>中，
+而我之前测试的程序没有 #include<stdlib.h> 命令，加上之后就运行正常了。
+
+另外，将第2行的程序中(int *)去掉，在VS2017中也可以正常运行，《C和指针》中说老的编译器要求必须对malloc返回的void *类型
+的指针进行强制转换，但在转换的时候一定注意是 (int *) 而不是 (int)
+
+malloc函数 原型：http://www.cplusplus.com/reference/cstdlib/malloc/?kw=malloc
+
+/* malloc example: random string generator*/
+#include <stdio.h>      /* printf, scanf, NULL */
+#include <stdlib.h>     /* malloc, free, rand */
+
+int main ()
+{
+  int i,n;
+  char * buffer;
+
+  printf ("How long do you want the string? ");
+  scanf ("%d", &i);
+
+  buffer = (char*) malloc (i+1);
+  if (buffer==NULL) exit (1);
+
+  for (n=0; n<i; n++)
+    buffer[n]=rand()%26+'a';
+  buffer[i]='\0';
+
+  printf ("Random string: %s\n",buffer);
+  free (buffer);
+
+  return 0;
+}
