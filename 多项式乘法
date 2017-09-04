@@ -1,3 +1,5 @@
+//秦九韶算法实现多项式乘法
+
 #include<stdio.h>
 
 double f(int n, double a[], double x)
