@@ -1,0 +1,41 @@
+// 原题目的地址：https://www.patest.cn/contests/pat-b-practise/1002
+// 整数n太大，把输入当成字符数据读进来
+// 暂时没有想到在递归函数中就解决“一行中最后一个拼音数字后没有空格”的问题，在主函数中输出一个退格符可以解决，不过在PAT oj里面报错。
+
+#include<stdio.h>
+#include <ctype.h>
+#include<stdlib.h>
+void PrintT(int n);
+char *po[10] = { "ling", "yi", "er", "san", "si", "wu", "liu", "qi", "ba", "jiu" };
+int main()
+{
+	int  ch, sum, index;
+	char array[101];
+
+	sum = 0;
+	index = 0;
+	//while ((ch = getchar()) != EOF) {
+		//sum += ch - '0';
+	//}
+	gets(array);
+	while (array[index] != NULL) {
+		sum = sum + (array[index] - '0');
+		index++;
+	}
+
+	PrintT(sum);
+	printf("\b");
+	return 0;
+}
+
+void PrintT(int n)
+{	
+	int num;
+	if (n <= 0)
+		return;
+	else {
+		PrintT(n / 10);
+		num = n % 10;
+		printf("%s ", po[num]);
+	}
+}
